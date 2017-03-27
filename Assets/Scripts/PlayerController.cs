@@ -1,11 +1,20 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class PlayerController : MonoBehaviour {
 
+	//the speed which we pretend the car is going at; related to speed at which walls/floor move
+	public float simulatedSpeed;
+
+	//how the player moves laterally
     public float acceleration;
     public float maxspeed;
+
+	//pointer for rotating car model
+	[SerializeField]
+	private GameObject model;
 
     private Rigidbody rb;
 
@@ -13,6 +22,13 @@ public class PlayerController : MonoBehaviour {
     {
         rb = GetComponent<Rigidbody>();
     }
+
+	private void Update() {
+		const float radianstodegrees = 180f/(float)Math.PI;
+
+		Vector3 modelrot = new Vector3((float)Math.Atan(rb.velocity.y / simulatedSpeed)*radianstodegrees, (float)Math.Atan(rb.velocity.x / simulatedSpeed)*radianstodegrees, 0.0f);
+		model.transform.localEulerAngles = modelrot;
+	}
 
 	void FixedUpdate () {
         float moveHorizontal = Input.GetAxis("Horizontal");
