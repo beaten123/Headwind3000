@@ -447,8 +447,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c501155f78de8448a9db2ffd1305b0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  simulatedSpeed: 35
   acceleration: 300
   maxspeed: 7
+  model: {fileID: 2050303683}
 --- !u!54 &605276036
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -884,6 +886,10 @@ Transform:
   m_Father: {fileID: 165779285}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2050303683 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 100002, guid: b0b8a1758a36bc1429a523164a8fe569, type: 3}
+  m_PrefabInternal: {fileID: 1200954283}
 --- !u!4 &2076705297 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400002, guid: b0b8a1758a36bc1429a523164a8fe569, type: 3}
