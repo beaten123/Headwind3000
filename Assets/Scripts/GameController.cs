@@ -10,17 +10,33 @@ public class GameController : MonoBehaviour {
     public float spawnWait;
     public float startWait;
     public float waveWait;
-	public float startingSpeed;
+	
+	public float startingSimulatedSpeed;
 
-	private float currentSpeed;
+	//speeds of spawned enemies
+	private const float basicEnemySpeed = 70f;
+
+	public static float currentSimulatedSpeed;
+
+	//for scrolling, texture materials for each primitive
+	public Material buildingMaterial;
+	public Material floorMaterial;
 
     void Start()
     {
         StartCoroutine (SpawnWaves());
-		currentSpeed = startingSpeed;
+		currentSimulatedSpeed = startingSimulatedSpeed;
     }
 
-    IEnumerator SpawnWaves()
+	private void Update() {
+		//to reflect mesh dimensions
+		const float wallSpeedToOffset = 1f/(500f/30f);
+		const float floorSpeedToOffset = 1f/(500f/20f);
+		buildingMaterial.mainTextureOffset -= new Vector2(currentSimulatedSpeed*wallSpeedToOffset*Time.deltaTime, 0);
+		floorMaterial.mainTextureOffset -= new Vector2(0, currentSimulatedSpeed * floorSpeedToOffset * Time.deltaTime);
+	}
+
+	IEnumerator SpawnWaves()
     {
         yield return new WaitForSeconds (startWait);
         while (true)
@@ -33,15 +49,15 @@ public class GameController : MonoBehaviour {
                 Quaternion spawnRotation = Quaternion.identity;
                 GameObject enemy = Instantiate(hazard, spawnPosition, spawnRotation);
 
-				//set the new enemy's speed
-				enemy.GetComponent<Rigidbody>().velocity = transform.forward * -currentSpeed;
+				//set the new enemy's speed; for now, only spawning basic enemies
+				enemy.GetComponent<Rigidbody>().velocity = transform.forward * -(currentSimulatedSpeed + basicEnemySpeed);
 				yield return new WaitForSeconds(spawnWait);
             }
 
 			//make the next wave more difficult
 			hazardCount += 2;
 			spawnWait *= 0.9f;
-			currentSpeed += 0.2f*startingSpeed;
+			currentSimulatedSpeed += 0.2f*startingSimulatedSpeed;
 
             yield return new WaitForSeconds (waveWait);
         }

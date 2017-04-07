@@ -37,7 +37,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.43667564, g: 0.48427147, b: 0.56452364, a: 1}
+  m_IndirectSpecularColor: {r: 0.43667555, g: 0.48427176, b: 0.56452405, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -283,8 +283,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 339035582}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -4.8, z: 210}
-  m_LocalScale: {x: 2, y: 1, z: 100}
+  m_LocalPosition: {x: 0, y: -4.8, z: 220}
+  m_LocalScale: {x: 2, y: 1, z: 50}
   m_Children: []
   m_Father: {fileID: 165779285}
   m_RootOrder: 2
@@ -447,7 +447,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c501155f78de8448a9db2ffd1305b0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  simulatedSpeed: 35
   acceleration: 300
   maxspeed: 7
   model: {fileID: 2050303683}
@@ -695,7 +694,7 @@ Transform:
   m_GameObject: {fileID: 1119999947}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -10, y: 0, z: 220}
-  m_LocalScale: {x: 2, y: 20, z: 500}
+  m_LocalScale: {x: -2, y: 20, z: 500}
   m_Children: []
   m_Father: {fileID: 165779285}
   m_RootOrder: 1
@@ -791,7 +790,9 @@ MonoBehaviour:
   spawnWait: 0.5
   startWait: 0.25
   waveWait: 0
-  startingSpeed: 70
+  startingSimulatedSpeed: 35
+  buildingMaterial: {fileID: 2100000, guid: 010bad6727a9de64fb85a10339655423, type: 2}
+  floorMaterial: {fileID: 2100000, guid: b1025020e42945a448c6ae42405e34b3, type: 2}
 --- !u!4 &1414499944
 Transform:
   m_ObjectHideFlags: 0
